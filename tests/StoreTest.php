@@ -119,6 +119,29 @@
 
 		}
 
+		function test_delete()
+		{
+			//Arrange
+			$name = "House of Shoes and Waffles";
+			$address = "123 Street";
+			$phone = "4-44";
+			$test_store = new Store($name, $address, $phone);
+			$test_store->save(); 
+
+			$name2 = "Bob's Shoe Palace";
+			$address2 = "456 Main Street";
+			$phone2 = "1-800-NEW-SHOE";
+			$test_store2 = new Store($name, $address, $phone);
+			$test_store2->save(); 
+
+			//Act
+			$test_store->delete();
+			$result = Store::getAll(); 
+
+			//Assert
+			$this->assertEquals([$test_store2], $result);
+
+		}
 
 
 

@@ -69,6 +69,7 @@
 			catch (PDOException $e) { echo "ERROR >>> ". $e->getMessage(); }						
 		}
 
+
 		function delete()
 		{
 			try {
@@ -77,11 +78,17 @@
 			catch (PDOException $e) { echo "ERROR >>> ". $e->getMessage(); }			
 		}
 
+
 		function updateName ($new_name) {
 			$GLOBALS['DB']->exec("UPDATE stores SET name = '{$new_name}' WHERE id = {$this->getId()};");
 			$this->setName($new_name); 
 		}
 
+
+		function updateAddress ($new_address) {
+			$GLOBALS['DB']->exec("UPDATE stores SET address = '{$new_address}' WHERE id = {$this->getId()};");
+			$this->setAddress($new_address); 
+		}
 
 
 		// STATIC Methods

@@ -194,7 +194,7 @@
 			$test_store->save(); 
 
 			// Act
-			$new_name = "456 Main Street";
+			$new_address = "456 Main Street";
 			$test_store->updateAddress($new_address);
 
 			//Assert

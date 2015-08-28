@@ -27,7 +27,7 @@
 			//Arrange
 			$name = "House of Shoes and Waffles";
 			$address = "123 Street";
-			$phone = "4";
+			$phone = "4-44";
 			$test_store = new Store($name, $address, $phone);
 
 			//Act
@@ -38,7 +38,22 @@
 
 		}
 
+		function test_save()
+		{
+			//Arrange
+			$name = "House of Shoes and Waffles";
+			$address = "123 Street";
+			$phone = "4-44";
+			$test_store = new Store($name, $address, $phone);
 
+			//Act
+			$test_store->save(); 
+
+			//Assert
+			$result = Store::getAll(); 
+			$this->assertEquals($test_store, $result[0]);
+
+		}
 
 
 

@@ -31,7 +31,7 @@
 		}
 
 
-		// DATABASE methods
+		// Basic Database altering methods
 
 		function save()
 		{
@@ -51,6 +51,39 @@
 			catch (PDOException $e) { echo "ERROR >>> ". $e->getMessage(); }			
 		}
 
+
+		// DATABASE ALTERING Methods involving other tables
+
+		function addStore ($new_store)
+		{
+			$GLOBALS['DB']->exec("INSERT INTO partnerships (brand_id,store_id) VALUES (
+				{$this->getId()},
+				{$new_store->getId()}
+			);");
+		}
+
+
+		function getStores () 
+		{
+			$stores_query = $GLOBALS['DB']->query(
+				"SELECT stores.* FROM
+					brands JOIN partnerships ON (brands.id = partnerships.brand_id)
+						   JOIN stores       ON (partnerships.store_id = stores.id)
+				 WHERE brands.id = {$this->getId()};"
+			);
+
+			$matching_stores = array();
+
+			foreach($stores_query as $store) {
+				$name = $store['name'];
+				$address = $store['address'];
+				$phone = $store['phone'];
+				$id = $store['id'];
+				$new_store = new Store($name,$address,$phone,$id);
+				array_push($matching_stores, $new_store);
+			}
+			return $matching_stores; 
+		}
 
 
 		// STATIC methods

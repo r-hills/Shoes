@@ -55,6 +55,21 @@
 
 
 
+
+		// STATIC methods
+
+		static function deleteAll()
+		{
+			try {
+				$GLOBALS['DB']->exec("DELETE FROM stores;");
+			}
+			catch (PDOException $e) { echo "ERROR >>> ". $e->getMessage(); }						
+		}
+
+
+
+
+
 	}
 	
 ?>		

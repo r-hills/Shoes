@@ -37,6 +37,21 @@
 
 		}
 
+		function test_save()
+		{
+			//Arrange
+			$name = "Nike";
+			$test_brand = new Brand($name);
+
+			//Act
+			$test_brand->save(); 
+
+			//Assert
+			$result = Brand::getAll(); 
+			$this->assertEquals($test_brand, $result[0]);
+
+		}		
+
 
 
 

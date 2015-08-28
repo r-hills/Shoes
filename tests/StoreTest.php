@@ -22,6 +22,27 @@
 			// Brand::deleteAll(); 
 		}
 
+		function test_getName()
+		{
+			//Arrange
+			$name = "House of Shoes and Waffles";
+			$address = "123 Street";
+			$phone = "4";
+			$test_store = new Store($name, $address, $phone);
+
+			//Act
+			$result = $test_store->getName();
+
+			//Assert
+			$this->assertEquals($name, $result); 
+
+		}
+
+
+
+
+
+
 
 	}
 	

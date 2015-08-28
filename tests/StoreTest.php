@@ -162,7 +162,7 @@
 			$result = Store::find($test_store2->getId()); 
 
 			//Assert
-			$this->assertEquals([$test_store2], $result);
+			$this->assertEquals($test_store2, $result);
 
 		}
 

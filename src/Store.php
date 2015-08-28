@@ -54,7 +54,7 @@
 		}
 
 
-		// DATABASE ALTERING Methods
+		// DATABASE ALTERING Basic Methods
 
 		function save ()
 		{
@@ -69,6 +69,13 @@
 			catch (PDOException $e) { echo "ERROR >>> ". $e->getMessage(); }						
 		}
 
+		function delete()
+		{
+			try {
+				$GLOBALS['DB']->exec("DELETE FROM stores WHERE id = {$this->getId()};");
+			}
+			catch (PDOException $e) { echo "ERROR >>> ". $e->getMessage(); }			
+		}
 
 
 

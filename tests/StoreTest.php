@@ -6,7 +6,7 @@
 	*/
 
 	require_once "src/Store.php";
-	// require_once "src/Brand.php";
+	require_once "src/Brand.php";
 
 	$server = 'mysql:host=localhost;dbname=shoes_test';
 	$username = 'root';
@@ -19,7 +19,7 @@
 		protected function tearDown()
 		{
 			Store::deleteAll();
-			// Brand::deleteAll(); 
+			Brand::deleteAll(); 
 		}
 
 		function test_getName()
@@ -218,7 +218,56 @@
 			//Assert
 			$this->assertEquals($new_phone, $test_store->getPhone());
 
-		}			
+		}		
+
+
+		function test_addBrand()
+		{
+			//Arrange
+			$name = "House of Shoes and Waffles";
+			$address = "123 Street";
+			$phone = "4-44";
+			$test_store = new Store($name, $address, $phone);
+			$test_store->save(); 
+
+			$test_brand = new Brand("Nike",1);
+			$test_brand->save();
+	
+			//Act
+			$test_store->addBrand($test_brand);			
+		
+			//Assert
+			$result = $test_store->getAuthors();
+			$this->assertEquals([$test_brand], $result); 
+			
+		}
+
+
+
+
+		// function test_getBrands()
+		// {
+		// 	//Arrange
+		// 	$name = "House of Shoes and Waffles";
+		// 	$address = "123 Street";
+		// 	$phone = "4-44";
+		// 	$test_store = new Store($name, $address, $phone);
+		// 	$test_store->save(); 
+
+		// 	$test_brand = new Brand("Nike",1);
+		// 	$test_brand->save();
+		// 	$test_brand2 = new Brand("Adidas",2); 
+		// 	$test_brand2->save(); 
+
+		// 	// Act
+
+
+		// 	//Assert
+		// 	$this->assertEquals($new_phone, $test_store->getPhone());
+
+		// }	
+
+
 
 	}
 	

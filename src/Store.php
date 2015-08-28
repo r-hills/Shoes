@@ -97,6 +97,39 @@
 		}
 
 
+		// Methods involving other tables
+
+		function addBrand ($new_brand)
+		{
+			$GLOBALS['DB']->exec("INSERT INTO partnerships (brand_id,store_id) VALUES (
+				{$this->getId()},
+				{$new_brand->getId()}
+			);");
+		}
+
+
+		function getBrands ()
+		{
+			$brands_query = $GLOBALS['DB']->query(
+				"SELECT brands.* FROM
+					stores JOIN partnerships ON (stores.id = partnerships.store_id)
+					       JOIN brands       ON (partnerships.brand_id = brands.id)
+				 WHERE stores.id = {$this->getId()};	       
+				"
+			); 
+
+			$matching_brands = array(); 
+
+			foreach($brands_query as $brand) {
+				$name = $brand['name'];
+				$id = $brand['id'];
+				$new_brand = new Brand($name, $id);
+				array_push($matching_brands, $new_brand);
+			}
+			return $matching_brands; 
+		}
+
+
 		// STATIC Methods
 
 		static function deleteAll()

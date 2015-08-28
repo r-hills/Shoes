@@ -166,7 +166,7 @@
 
 		}
 
-		function test_update()
+		function test_updateName()
 		{
 			//Arrange
 			$name = "House of Shoes and Waffles";
@@ -184,7 +184,23 @@
 
 		}		
 
+		function test_updateAddress()
+		{
+			//Arrange
+			$name = "House of Shoes and Waffles";
+			$address = "123 Street";
+			$phone = "4-44";
+			$test_store = new Store($name, $address, $phone);
+			$test_store->save(); 
 
+			// Act
+			$new_name = "456 Main Street";
+			$test_store->updateAddress($new_address);
+
+			//Assert
+			$this->assertEquals($new_address, $test_store->getAddress());
+
+		}	
 
 	}
 	

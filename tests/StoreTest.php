@@ -18,7 +18,7 @@
 
 		protected function tearDown()
 		{
-			// Store::deleteAll();
+			Store::deleteAll();
 			// Brand::deleteAll(); 
 		}
 
@@ -65,8 +65,6 @@
 			//Act
 			$test_store->save(); 
 
-			echo ">>> NEW STORE >>> ";
-			var_dump($test_store); 
 			//Assert
 			$result = Store::getAll(); 
 
@@ -74,7 +72,28 @@
 
 		}
 
+		function test_getAll()
+		{
+			//Arrange
+			$name = "House of Shoes and Waffles";
+			$address = "123 Street";
+			$phone = "4-44";
+			$test_store = new Store($name, $address, $phone);
+			$test_store->save(); 
 
+			$name2 = "Bob's Shoe Palace";
+			$address2 = "456 Main Street";
+			$phone2 = "1-800-NEW-SHOE";
+			$test_store2 = new Store($name, $address, $phone);
+			$test_store2->save(); 
+
+			//Act
+			$result = Store::getAll(); 
+
+			//Assert
+			$this->assertEquals([$test_store,$test_store2], $result);
+
+		}
 
 
 

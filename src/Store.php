@@ -102,8 +102,8 @@
 		function addBrand ($new_brand)
 		{
 			$GLOBALS['DB']->exec("INSERT INTO partnerships (brand_id,store_id) VALUES (
-				{$this->getId()},
-				{$new_brand->getId()}
+				{$new_brand->getId()},
+				{$this->getId()}
 			);");
 		}
 

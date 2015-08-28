@@ -230,16 +230,20 @@
 			$test_store = new Store($name, $address, $phone);
 			$test_store->save(); 
 
-			$test_brand = new Brand("Nike",1);
+			$test_brand = new Brand("Nike");
 			$test_brand->save();
+			echo ">>> TEST BRAND >>> ";
+			var_dump($test_brand);
 	
 			//Act
 			$test_store->addBrand($test_brand);			
 		
 			//Assert
-			$result = $test_store->getAuthors();
+			$result = $test_store->getBrands();
+			echo ">>> RESULT >>> ";
+			var_dump($result);
 			$this->assertEquals([$test_brand], $result); 
-			
+
 		}
 
 

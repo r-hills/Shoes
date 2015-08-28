@@ -9,7 +9,7 @@
 		function __construct($name, $id = null)
 		{
 			$this->name = $name; 
-			$this->id = $id; 
+			$this->id = (int)$id; 
 		}
 
 
@@ -63,6 +63,7 @@
 			catch (PDOException $e) { echo "ERROR >>> ". $e->getMessage(); }						
 		}
 
+
 		static function getAll()
 		{
 			try {
@@ -79,6 +80,7 @@
 			}
 			return $brands;	
 		}
+
 
 		static function find($search_id)
 		{

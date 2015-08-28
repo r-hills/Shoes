@@ -238,15 +238,13 @@
 		
 			//Assert
 			$result = $test_store->getBrands();
-			echo ">>> RESULT >>> ";
-			var_dump($result);
 			$this->assertEquals([$test_brand], $result); 
 
 		}
 
 
 
-		function test_addBrand()
+		function test_getBrands()
 		{
 			//Arrange
 			$name = "House of Shoes and Waffles";

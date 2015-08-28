@@ -131,6 +131,26 @@
 			
 		}										
 
+		function test_addStore()
+		{
+			//Arrange
+			$name = "House of Shoes and Waffles";
+			$address = "123 Street";
+			$phone = "4-44";
+			$test_store = new Store($name, $address, $phone);
+			$test_store->save(); 
+
+			$test_brand = new Brand("Nike");
+			$test_brand->save();
+	
+			//Act
+			$test_brand->addStore($test_store);			
+		
+			//Assert
+			$result = $test_brand->getStores();
+			$this->assertEquals([$test_store], $result); 
+
+		}
 
 
 

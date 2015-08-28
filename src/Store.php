@@ -13,7 +13,7 @@
 			$this->name = $name;
 			$this->address = $address;
 			$this->phone = $phone;
-			$this->id = $id; 
+			$this->id = (int)$id; 
 		}
 
 		// Get and Set methods
@@ -54,9 +54,25 @@
 		}
 
 
+		// DATABASE ALTERING Methods
+
+		function save ()
+		{
+			// try {
+				$GLOBALS['DB']->exec("INSERT INTO stores (name,address,phone) VALUES (
+					'{$this->getName()}',
+					'{$this->getAddress()}',
+					'{$this->getPhone()}'
+				);");
+				$this->id = $GLOBALS['DB']->lastInsertId(); 
+			// }
+			// catch (PDOException $e) { echo "ERROR >>> ". $e->getMessage(); }						
+		}
 
 
-		// STATIC methods
+
+
+		// STATIC Methods
 
 		static function deleteAll()
 		{
@@ -64,6 +80,28 @@
 				$GLOBALS['DB']->exec("DELETE FROM stores;");
 			}
 			catch (PDOException $e) { echo "ERROR >>> ". $e->getMessage(); }						
+		}
+
+
+		static function getAll()
+		{
+			try {
+				$returned_stores = $GLOBALS['DB']->query("SELECT * FROM stores;");
+			}
+			catch (PDOException $e) { echo "ERROR >>> ". $e->getMessage(); } 
+
+			$stores = array();
+
+			foreach($returned_stores as $store) {
+				$name = $store['name'];
+				$address = $store['address'];
+				$phone = $store['phone'];
+				$id = $store['id'];
+
+				$new_store = new Store($name,$address,$phone,$id);
+				array_push($stores, $new_store);
+			}
+			return $stores; 
 		}
 
 

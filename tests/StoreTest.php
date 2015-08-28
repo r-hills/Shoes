@@ -166,6 +166,24 @@
 
 		}
 
+		function test_update()
+		{
+			//Arrange
+			$name = "House of Shoes and Waffles";
+			$address = "123 Street";
+			$phone = "4-44";
+			$test_store = new Store($name, $address, $phone);
+			$test_store->save(); 
+
+			// Act
+			$new_name = "Bob's Shoe Palace";
+			$test_store->updateName($new_name);
+
+			//Assert
+			$this->assertEquals($new_name, $test_store->getName());
+
+		}		
+
 
 
 	}

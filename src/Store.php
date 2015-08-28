@@ -54,7 +54,7 @@
 		}
 
 
-		// DATABASE ALTERING Basic Methods
+		// BASIC DB ALTERING Methods
 
 		function save ()
 		{
@@ -75,6 +75,11 @@
 				$GLOBALS['DB']->exec("DELETE FROM stores WHERE id = {$this->getId()};");
 			}
 			catch (PDOException $e) { echo "ERROR >>> ". $e->getMessage(); }			
+		}
+
+		function updateName ($new_name) {
+			$GLOBALS['DB']->exec("UPDATE stores SET name = '{$new_name}' WHERE id = {$this->getId()};");
+			$this->setName($new_name); 
 		}
 
 

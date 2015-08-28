@@ -50,7 +50,26 @@
 			$result = Brand::getAll(); 
 			$this->assertEquals($test_brand, $result[0]);
 
-		}		
+		}
+
+		function test_getAll()
+		{
+			//Arrange
+			$name = "Nike";
+			$test_brand = new Brand($name);
+			$test_brand->save(); 
+
+			$name2 = "Adidas";
+			$test_brand2 = new Brand($name2);
+			$test_brand2->save(); 
+
+			//Act
+			$result = Brand::getAll(); 			
+
+			//Assert
+			$this->assertEquals([$test_brand,$test_brand2], $result);
+
+		}				
 
 
 

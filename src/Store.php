@@ -91,6 +91,12 @@
 		}
 
 
+		function updatePhone ($new_phone) {
+			$GLOBALS['DB']->exec("UPDATE stores SET phone = '{$new_phone}' WHERE id = {$this->getId()};");
+			$this->setPhone($new_phone); 
+		}
+
+
 		// STATIC Methods
 
 		static function deleteAll()

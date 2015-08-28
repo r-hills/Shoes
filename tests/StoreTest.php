@@ -202,6 +202,24 @@
 
 		}	
 
+		function test_updatePhone()
+		{
+			//Arrange
+			$name = "House of Shoes and Waffles";
+			$address = "123 Street";
+			$phone = "4-44";
+			$test_store = new Store($name, $address, $phone);
+			$test_store->save(); 
+
+			// Act
+			$new_phone = "(888) 123-4567";
+			$test_store->updatePhone($new_phone);
+
+			//Assert
+			$this->assertEquals($new_phone, $test_store->getPhone());
+
+		}			
+
 	}
 	
 ?>		

@@ -43,6 +43,15 @@
 		}		
 
 
+		function delete()
+		{
+			try {
+				$GLOBALS['DB']->exec("DELETE FROM brands WHERE id = {$this->getId()};");
+			}
+			catch (PDOException $e) { echo "ERROR >>> ". $e->getMessage(); }			
+		}
+
+
 
 		// STATIC methods
 

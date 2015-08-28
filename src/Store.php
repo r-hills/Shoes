@@ -58,15 +58,15 @@
 
 		function save ()
 		{
-			// try {
+			try {
 				$GLOBALS['DB']->exec("INSERT INTO stores (name,address,phone) VALUES (
 					'{$this->getName()}',
 					'{$this->getAddress()}',
 					'{$this->getPhone()}'
 				);");
 				$this->id = $GLOBALS['DB']->lastInsertId(); 
-			// }
-			// catch (PDOException $e) { echo "ERROR >>> ". $e->getMessage(); }						
+			}
+			catch (PDOException $e) { echo "ERROR >>> ". $e->getMessage(); }						
 		}
 
 

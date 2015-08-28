@@ -232,8 +232,6 @@
 
 			$test_brand = new Brand("Nike");
 			$test_brand->save();
-			echo ">>> TEST BRAND >>> ";
-			var_dump($test_brand);
 	
 			//Act
 			$test_store->addBrand($test_brand);			
@@ -248,28 +246,31 @@
 
 
 
+		function test_addBrand()
+		{
+			//Arrange
+			$name = "House of Shoes and Waffles";
+			$address = "123 Street";
+			$phone = "4-44";
+			$test_store = new Store($name, $address, $phone);
+			$test_store->save(); 
 
-		// function test_getBrands()
-		// {
-		// 	//Arrange
-		// 	$name = "House of Shoes and Waffles";
-		// 	$address = "123 Street";
-		// 	$phone = "4-44";
-		// 	$test_store = new Store($name, $address, $phone);
-		// 	$test_store->save(); 
+			$test_brand = new Brand("Nike");
+			$test_brand->save();
+			$test_brand2 = new Brand("Adidas"); 
+			$test_brand2->save(); 		
+	
+			//Act
+			$test_store->addBrand($test_brand);
+			$test_store->addBrand($test_brand2);	
+		
+			//Assert
+			$result = $test_store->getBrands();
+			$this->assertEquals([$test_brand,$test_brand2], $result); 
 
-		// 	$test_brand = new Brand("Nike",1);
-		// 	$test_brand->save();
-		// 	$test_brand2 = new Brand("Adidas",2); 
-		// 	$test_brand2->save(); 
-
-		// 	// Act
+		}
 
 
-		// 	//Assert
-		// 	$this->assertEquals($new_phone, $test_store->getPhone());
-
-		// }	
 
 
 

@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <title>Store Edit</title>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+    </head>
+    <body>
+
+        <div class="container">
+
+            <h3>Welcome to {{ store.getName }}</h3>
+            <h4>Address: {{ store.getAddress }}</h4>
+            <h4>Phone: {{ store.getPhone }}</h4>
+            <ul><strong>Brands of Shoes:</strong>
+
+                {% if brands is not empty %}
+
+                    {% for brand in brands %}
+
+                        <li>{{ brand.getName }}</li>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <p>No Shoe Brands listed yet</p>
+                
+                {% endif %}
+            </ul>
+            <p>
+
+                <strong>Add a Shoe Brand:</strong>
+
+                <form action='/store/{{store.getId}}' method='post'>
+                    <input id='store_id' name='store_id' type='hidden' value='{{ store.getId }}'>
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <label for ='brand'>Name:</label>
+                        </div>
+                        <div class="col-xs-3">
+                            <input id='brand' name='brand' type='text' placeholder="" required>
+                        </div>
+                    </div>
+                    <button class="btn-default" type="submit">Add Brand</button>
+                    <br/>
+                </form>
+
+                <br>
+                <strong>Update: {{ store.getName }}</strong>
+                <form action="/store/{{ store.getId }}/edit" method="post">
+                    <input name="_method" type="hidden" value="patch">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <label for="client_name">Name: </label>
+                        </div>
+                        <div class="col-xs-3">
+                            <input id="name" name="name" type="text" required><br>
+                        </div>
+                    </div> 
+                    <div class="row">
+                        <div class="col-xs-2">
+                             <label for="client_name">Address: </label>
+                        </div>
+                        <div class="col-xs-3">
+                            <input id="address" name="address" type="text" required><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <label for="client_name">Phone: </label>
+                        </div>
+                        <div class="col-xs-3">
+                            <input id="phone" name="phone" type="text" required>  
+                            <br> 
+                        </div>
+                    </div>
+
+                    <button class="btn-default" type="submit">Update</button>
+                     
+                </form>
+                       
+
+                <a href="/">Home</a>
+
+            </p>
+
+        </div>
+    </body>
+</html>

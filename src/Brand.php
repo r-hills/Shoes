@@ -40,13 +40,19 @@
 				$this->id = $GLOBALS['DB']->lastInsertId(); 
 			} 
 			catch (PDOException $e) { echo "ERROR >>> ". $e->getMessage(); }
-		}		
+		}	
+
+		function updateName ($new_name) {
+			$GLOBALS['DB']->exec("UPDATE brands SET name = '{$new_name}' WHERE id = {$this->getId()};");
+			$this->setName($new_name); 
+		}			
 
 
 		function delete()
 		{
 			try {
 				$GLOBALS['DB']->exec("DELETE FROM brands WHERE id = {$this->getId()};");
+				$GLOBALS['DB']->exec("DELETE FROM partnerships WHERE id = {$this->getId()};");
 			}
 			catch (PDOException $e) { echo "ERROR >>> ". $e->getMessage(); }			
 		}
@@ -92,6 +98,7 @@
 		{
 			try {
 				$GLOBALS['DB']->exec("DELETE FROM brands;");
+				$GLOBALS['DB']->exec("DELETE FROM partnerships");
 			}
 			catch (PDOException $e) { echo "ERROR >>> ". $e->getMessage(); }						
 		}

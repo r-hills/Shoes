@@ -73,7 +73,9 @@
 		function delete()
 		{
 			try {
-				$GLOBALS['DB']->exec("DELETE FROM stores WHERE id = {$this->getId()};");
+				$store_id = $this->getId();
+				$GLOBALS['DB']->exec("DELETE FROM stores WHERE id = {$store_id};");
+				$GLOBALS['DB']->exec("DELETE FROM partnerships WHERE id = {$store_id};");
 			}
 			catch (PDOException $e) { echo "ERROR >>> ". $e->getMessage(); }			
 		}
@@ -136,6 +138,7 @@
 		{
 			try {
 				$GLOBALS['DB']->exec("DELETE FROM stores;");
+				$GLOBALS['DB']->exec("DELETE FROM partnerships;");
 			}
 			catch (PDOException $e) { echo "ERROR >>> ". $e->getMessage(); }						
 		}

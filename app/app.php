@@ -66,13 +66,10 @@
     });
 
     $app->patch("/store/{id}", function($id) use ($app) {
-        $store = new Store( 
-            preg_quote($_POST['name'], "'"),
-            preg_quote($_POST['address'], "'"),
-            preg_quote($_POST['phone'], "'")
-        );
-        $store->save();
         $store = Store::find($id);
+        $store->updateName( preg_quote($_POST['name'], "'") );
+        $store->updateAddress( preg_quote($_POST['address'], "'") );
+        $store->updatePhone( preg_quote($_POST['phone'], "'") );    
         $brands = $store->getBrands(); 
         return $app['twig']->render('store.html.twig',
             array('store' => $store, 'brands' => $brands ) );

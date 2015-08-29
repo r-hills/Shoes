@@ -46,7 +46,7 @@
 
                 <br>
                 <strong>Update: {{ store.getName }}</strong>
-                <form action="/store/{{ store.getId }}/edit" method="post">
+                <form action="/store/{{ store.getId }}" method="post">
                     <input name="_method" type="hidden" value="patch">
                     <div class="row">
                         <div class="col-xs-2">

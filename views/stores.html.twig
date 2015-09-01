@@ -6,6 +6,10 @@
     <body>
 
         <div class="container">
+            
+
+            {% include 'partials/nav.html' %}
+
 
             <h2> Store Listings: </h2>
 
@@ -26,17 +30,37 @@
 
                 <h4>Add a Store:</h4>
 
-                <form action='/stores' method='post'>
-                    <label for ='name'>Name:</label>
-                    <input id='name' name='name' type='text' placeholder="" required>
-                    <label for ='address'>Address:</label>
-                    <input id='address' name='address' type='text' placeholder="" required>
-                    <label for ='phone'>Phone:</label>
-                    <input id='phone' name='phone' type='text' placeholder="" required>
-                    <br>
-                    <button class="btn-default" type="submit">Add Store</button>
-                    <br/>
-                </form>
+                    <form action='/stores' method='post'>
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <label for ='name'>Name:</label>
+                            </div>
+                            <div class="col-xs-3">
+                                <input id='name' name='name' type='text' placeholder="" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <label for ='address'>Address:</label>
+                            </div>
+                            <div class="col-xs-3">
+                                <input id='address' name='address' type='text' placeholder="" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <label for ='phone'>Phone:</label>
+                            </div>
+                            <div class="col-xs-3">
+                                <input id='phone' name='phone' type='text' placeholder="" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <button class="btn-default" type="submit">Add Store</button>
+                            </div>
+                        </div>          
+                    </form>
 
                 <a href="/"><button class="btn-default">Home</button></a>
 

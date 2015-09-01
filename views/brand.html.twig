@@ -7,6 +7,10 @@
 
         <div class="container">
 
+
+            {% include 'partials/nav.html' %}
+
+
             <h3>Welcome to {{ brand.getName }}</h3>
 
             <strong>Stores that carry {{ brand.getName }}:</strong>
@@ -77,14 +81,20 @@
                      
                 </form>
 
-                <strong>Delete: {{brand.getName }}</strong>
+                <strong>Delete: {{brand.getName }} Brand</strong>
                 <form action="/brand/{{ brand.getId }}" method="post">
-                    <input name="_method" type="hidden" value="delete">
-                    <button type="submit" class="btn-default">Delete</button>
+                    <div class="row">
+                        <div class='col-xs-1'>
+                            <input name="_method" type="hidden" value="delete">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </div>
+                        <div class="col-xs-8"><br>
+                        </div> 
+                    </div>
                 </form>
                        
 
-                <a href="/">Home</a>
+                <a href="/"><button class="btn btn-medium btn-primary btn-xs-1">Home</button></a>
 
             </p>
 

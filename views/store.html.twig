@@ -32,21 +32,37 @@
             </ul>
             <p>
 
-                <strong>Add a Shoe Brand:</strong>
+            <div class='row'>
+                <div class='col-xs-2'>
+                    <strong>Add a Shoe Brand:</strong>
+                </div>
+                <div class='col-xs-3'>
+                    <form action='/store/{{store.getId}}' method='post'>
+                        <input id='store_id' name='store_id' type='hidden' value='{{ store.getId }}'>
 
-                <form action='/store/{{store.getId}}' method='post'>
-                    <input id='store_id' name='store_id' type='hidden' value='{{ store.getId }}'>
-                    <div class="row">
-                        <div class="col-xs-2">
-                            <label for ='brand'>Name:</label>
-                        </div>
-                        <div class="col-xs-3">
-                            <input id='brand' name='brand' type='text' placeholder="" required>
-                        </div>
-                    </div>
+                        <select name='brand'>
+                        {% if all_brands is not empty %}
+
+                            <!-- <option selectd value="base">Select a Shoe Brand</option> -->
+                            
+                            {% for brand in all_brands %}
+                                <option value='{{brand.getId}}'>{{brand.getName}}</option>   
+                            {% endfor %}
+
+                        {% else %}
+                            <strong selected value="base">No Brands entered. </strong>
+                        {% endif %}
+                        </select>
+
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col-xs-3'>
                     <button class="btn-default" type="submit">Add Brand</button>
-                    <br/>
+                    <br>
                 </form>
+                </div>
+            </div>
 
                 <br>
                 <strong>Update: {{ store.getName }}</strong>
@@ -86,11 +102,11 @@
                 <strong>Delete: {{store.getName }}</strong>
                 <form action="/store/{{ store.getId }}" method="post">
                     <input name="_method" type="hidden" value="delete">
-                    <button type="submit" class="btn-default">Delete</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
                        
 
-                <a href="/">Home</a>
+                 <a href="/"><button class="btn btn-medium btn-primary btn-xs-1">Home</button></a>
 
             </p>
 

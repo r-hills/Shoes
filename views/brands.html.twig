@@ -28,17 +28,30 @@
 
                 {% endif %}
 
-                <h4>Add a Brand:</h4>
-
-                <form action='/brands' method='post'>
-                    <label for ='name'>Name:</label>
-                    <input id='name' name='name' type='text' placeholder="" required>
-                    <br>
-                    <button class="btn-default" type="submit">Add Brand</button>
-                    <br/>
-                </form>
-
-                <a href="/"><button class="btn-default">Home</button></a>
+                <div class='row'>
+                    <div class='col-xs-2'>
+                        <h4>Add a Brand:</h4>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-xs-2'>
+                        <form action='/brands' method='post'>
+                            <label for ='name'>Name:</label> 
+                    </div>
+                    <div class='col-xs-3'>
+                            <input id='name' name='name' type='text' placeholder="" required>
+                            <br>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-xs-2'>
+                            <button class="btn-default" type="submit">Add Brand</button>
+                            <br>
+                        </form>
+                    </div>
+                </div>
+                <br>
+                <a href="/"><button class="btn btn-medium btn-primary btn-xs-1">Home</button></a>
 
             </p>
 

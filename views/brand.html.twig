@@ -32,37 +32,42 @@
             </ul>
             <p>
 
+
                 <strong>Add a Store that sells {{brand.getName}}</strong>
 
-                <form action='/brand/{{brand.getId}}' method='post'>
-                    <input id='brand_id' name='brand_id' type='hidden' value='{{ brand.getId }}'>
-                    <div class="row">
-                        <div class="col-xs-2">
-                            <label for ='name'>Name:</label>
-                        </div>
-                        <div class="col-xs-3">
-                            <input id='name' name='name' type='text' placeholder="" required>
-                        </div>
+
+                <div class='row'>
+                    <div class='col-xs-2'>
+                        <strong>Store Name:</strong>
                     </div>
-                    <div class="row">
-                        <div class="col-xs-2">
-                            <label for ='address'>Address:</label>
-                        </div>
-                        <div class="col-xs-3">
-                            <input id='address' name='address' type='text' placeholder="" required>
-                        </div>
+                    <div class='col-xs-3'>
+                        <form action='/brand/{{brand.getId}}' method='post'>
+                            <input id='brand_id' name='brand_id' type='hidden' value='{{ brand.getId }}'>
+
+                            <select name='store'>
+                            {% if all_stores is not empty %}
+
+                                <!-- <option selectd value="base">Select a Shoe Brand</option> -->
+                                
+                                {% for store in all_stores %}
+                                    <option value='{{store.getId}}'>{{store.getName}}</option>   
+                                {% endfor %}
+
+                            {% else %}
+                                <strong selected value="base">No Stores entered. </strong>
+                            {% endif %}
+                            </select>
+
                     </div>
-                    <div class="row">
-                         <div class="col-xs-2">
-                            <label for ='phone'>Phone:</label>
-                        </div>
-                        <div class="col-xs-3">
-                            <input id='phone' name='phone' type='text' placeholder="" required>
-                        </div>
+                </div>
+                <div class='row'>
+                    <div class='col-xs-3'>
+                        <button class="btn-default" type="submit">Add Store</button>
+                        <br>
+                    </form>
                     </div>
-                    <button class="btn-default" type="submit">Add Store</button>
-                    <br>
-                </form>
+                </div>
+
 
                 <br>
                 <strong>Update the Brand: {{ brand.getName }}</strong>

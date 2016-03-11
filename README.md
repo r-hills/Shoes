@@ -1,12 +1,12 @@
 # _SHOE LISTING_
 
-##### An app to display and edit lists of Stylists and their Clients, 21-Aug-2015_
+##### An app to display and edit lists of Shoe Stores and the Shoe Brands they carry. Written as an Epicodus Code Review 21-Aug-2015_
 
 #### By _**Rick Hills**_
 
 ## Description
 
-An app to add and edit lists of Shoes and Brands.  
+An app to add and edit lists of Shoe Stores and the brands they carry, either by Store or by Brand.   
 
 ## Setup
 
